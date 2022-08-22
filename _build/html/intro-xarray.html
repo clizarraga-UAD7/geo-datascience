@@ -1,0 +1,777 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to Xarray &#8212; Data Science in Geosciences</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Cloud Native Data in Geosciences." href="cloud-native-data.html" />
+    <link rel="prev" title="Introduction to Geospacial Data Science" href="intro-geo-data-sci.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science in Geosciences</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro-geo-data-sci.html">
+   Introduction to Geospacial Data Science
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introduction to Xarray
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cloud-native-data.html">
+   Cloud Native Data in Geosciences.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="JNBooks/XarrayExample1.html">
+   Xarray example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro-xarray.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/intro-xarray.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Introduction to Xarray
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introducing-the-dataarray-and-dataset">
+   Introducing the
+   <em>
+    DataArray
+   </em>
+   and
+   <em>
+    Dataset
+   </em>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-structures">
+   Data structures
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataarray">
+     DataArray
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creation-of-a-dataarray-object">
+     Creation of a DataArray object
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extracting-data-or-indexing">
+     Extracting data or “indexing”
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dropping-labels-and-dimensions">
+     Dropping labels and dimensions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#xarray-installation-and-dependencies">
+     Xarray installation and dependencies.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction to Xarray</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Introduction to Xarray
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introducing-the-dataarray-and-dataset">
+   Introducing the
+   <em>
+    DataArray
+   </em>
+   and
+   <em>
+    Dataset
+   </em>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-structures">
+   Data structures
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataarray">
+     DataArray
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creation-of-a-dataarray-object">
+     Creation of a DataArray object
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extracting-data-or-indexing">
+     Extracting data or “indexing”
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dropping-labels-and-dimensions">
+     Dropping labels and dimensions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#xarray-installation-and-dependencies">
+     Xarray installation and dependencies.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p><font color='royalblue'>test blue color font</font></p>
+<section id="introduction-to-xarray">
+<h1>Introduction to Xarray<a class="headerlink" href="#introduction-to-xarray" title="Permalink to this headline">#</a></h1>
+<p> <img src="https://docs.xarray.dev/en/v0.9.0/_images/dataset-diagram-logo.png" width=480/>
+<p>
+<p><a class="reference external" href="https://docs.xarray.dev/en/stable/">Xarray</a> is an open source project in <a class="reference external" href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> that extends <a class="reference external" href="https://pandas.pydata.org/">Pandas</a>, to handle <a class="reference external" href="https://en.wikipedia.org/wiki/Dimension">multidimensional</a> <a class="reference external" href="https://en.wikipedia.org/wiki/Data_structure">data structures</a> that are used in the physical sciences. Xarray integrates labels in the form of dimensions, coordinates and attributes to multidimensional arrays.</p>
+</section>
+<section id="introducing-the-dataarray-and-dataset">
+<h1>Introducing the <em>DataArray</em> and <em>Dataset</em><a class="headerlink" href="#introducing-the-dataarray-and-dataset" title="Permalink to this headline">#</a></h1>
+<p>Xarray expands on the capabilities on <a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.html">NumPy arrays</a>, providing a lot of streamlined data manipulation. It is similar in that respect to Pandas, but whereas Pandas excels at working with  <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/frame.html">dataframes</a>, Xarray is focused on N-dimensional arrays of data (i.e. grids). Its interface is based largely on the <a class="reference external" href="https://docs.unidata.ucar.edu/netcdf-c/current/netcdf_data_model.html">netCDF data model</a> (variables, attributes, and dimensions), but it goes beyond the traditional netCDF interfaces to provide functionality similar to <a class="reference external" href="https://docs.unidata.ucar.edu/netcdf-java/current/userguide/common_data_model_overview.html">netCDF-java’s Common Data Model (CDM)</a>.</p>
+<p>Xarrays have two core data structures:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray">DataArray</a>, which is a N-dimensional array with labeled coordinates and dimensions. It is a N-dimenisonal generalization of a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series">Pandas.Series</a>.</p></li>
+<li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset">Dataset</a>, which is a multidimensional in-memory array database.</p></li>
+</ul>
+</section>
+<section id="data-structures">
+<h1>Data structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">#</a></h1>
+<section id="dataarray">
+<h2>DataArray<a class="headerlink" href="#dataarray" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray">xarray.DataArray</a> is xarray’s implementation of a labeled, multi-dimensional array. It has several key properties:</p>
+<ul class="simple">
+<li><p><strong>values</strong>: a numpy.ndarray holding the array’s values</p></li>
+<li><p><strong>dims</strong>: dimension names for each axis (e.g., (‘x’, ‘y’, ‘z’))</p></li>
+<li><p><strong>coords</strong>: a dict-like container of arrays (coordinates) that label each point (e.g., 1-dimensional arrays of numbers, datetime objects or strings)</p></li>
+<li><p><strong>attrs</strong>: dict to hold arbitrary metadata (attributes)</p></li>
+</ul>
+<p>Xarray uses dims and coords to enable its core metadata aware operations. Dimensions provide names that xarray uses instead of the axis argument found in many numpy functions. Coordinates enable fast label based indexing and alignment, building on the functionality of the index found on a pandas DataFrame or Series.</p>
+<img src="https://docs.xarray.dev/en/stable/_images/dataset-diagram.png" width=480>
+<p>DataArray objects also can have a name and can hold arbitrary metadata in the form of their attrs property. Names and attributes are strictly for users and user-written code: xarray makes no attempt to interpret them, and propagates them only in unambiguous cases.</p>
+</section>
+<section id="creation-of-a-dataarray-object">
+<h2>Creation of a DataArray object<a class="headerlink" href="#creation-of-a-dataarray-object" title="Permalink to this headline">#</a></h2>
+<p>The <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/data-structures.html#dataarray">DataArray</a> is one of the basic building blocks of Xarray. It provides a numpy.ndarray-like object that expands to provide two critical pieces of functionality:</p>
+<ol class="simple">
+<li><p>Coordinate names and values are stored with the data, making slicing and indexing much more powerful.</p></li>
+<li><p>It has a built-in container for attributes.</p></li>
+</ol>
+<p>Example from Physical Sciences Lab at NOAA.</p>
+<img src="images/psl.noaa.gov.png" width=480>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the air_temperature dataset and define a xarray dataarray ds</span>
+<span class="c1"># 4 x Daily Air temperature in degrees K at sigma level 995</span>
+<span class="c1"># Spatial Coverage</span>
+<span class="c1"># 2.5 degree x 2.5 degree global grids (144x73) [2.5 degree = 172.5 miles]</span>
+<span class="c1"># 0.0E to 357.5E, 90.0N to 90.0S</span>
+
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
+<span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
+<span class="kn">import</span> <span class="nn">pooch</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">tutorial</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;air_temperature&#39;</span><span class="p">)</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p>We can inquiry about the array’s <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.values.html">ds.values</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">values</span>
+
+<span class="o">&lt;</span><span class="n">bound</span> <span class="n">method</span> <span class="n">Mapping</span><span class="o">.</span><span class="n">values</span> <span class="n">of</span> <span class="o">&lt;</span><span class="n">xarray</span><span class="o">.</span><span class="n">Dataset</span><span class="o">&gt;</span>
+<span class="n">Dimensions</span><span class="p">:</span>  <span class="p">(</span><span class="n">lat</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="mi">2920</span><span class="p">,</span> <span class="n">lon</span><span class="p">:</span> <span class="mi">53</span><span class="p">)</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+  <span class="o">*</span> <span class="n">lat</span>      <span class="p">(</span><span class="n">lat</span><span class="p">)</span> <span class="n">float32</span> <span class="mf">75.0</span> <span class="mf">72.5</span> <span class="mf">70.0</span> <span class="mf">67.5</span> <span class="mf">65.0</span> <span class="o">...</span> <span class="mf">25.0</span> <span class="mf">22.5</span> <span class="mf">20.0</span> <span class="mf">17.5</span> <span class="mf">15.0</span>
+  <span class="o">*</span> <span class="n">lon</span>      <span class="p">(</span><span class="n">lon</span><span class="p">)</span> <span class="n">float32</span> <span class="mf">200.0</span> <span class="mf">202.5</span> <span class="mf">205.0</span> <span class="mf">207.5</span> <span class="o">...</span> <span class="mf">322.5</span> <span class="mf">325.0</span> <span class="mf">327.5</span> <span class="mf">330.0</span>
+  <span class="o">*</span> <span class="n">time</span>     <span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span> <span class="mi">2013</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="o">...</span> <span class="mi">2014</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">31</span><span class="n">T18</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">Data</span> <span class="n">variables</span><span class="p">:</span>
+    <span class="n">air</span>      <span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">)</span> <span class="n">float32</span> <span class="o">...</span>
+<span class="n">Attributes</span><span class="p">:</span>
+    <span class="n">Conventions</span><span class="p">:</span>  <span class="n">COARDS</span>
+    <span class="n">title</span><span class="p">:</span>        <span class="mi">4</span><span class="n">x</span> <span class="n">daily</span> <span class="n">NMC</span> <span class="n">reanalysis</span> <span class="p">(</span><span class="mi">1948</span><span class="p">)</span>
+    <span class="n">description</span><span class="p">:</span>  <span class="n">Data</span> <span class="ow">is</span> <span class="kn">from</span> <span class="nn">NMC</span> <span class="n">initialized</span> <span class="n">reanalysis</span>\<span class="n">n</span><span class="p">(</span><span class="mi">4</span><span class="n">x</span><span class="o">/</span><span class="n">day</span><span class="p">)</span><span class="o">.</span>  <span class="n">These</span> <span class="n">a</span><span class="o">...</span>
+    <span class="n">platform</span><span class="p">:</span>     <span class="n">Model</span>
+    <span class="n">references</span><span class="p">:</span>   <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">esrl</span><span class="o">.</span><span class="n">noaa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">psd</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">gridded</span><span class="o">/</span><span class="n">data</span><span class="o">.</span><span class="n">ncep</span><span class="o">.</span><span class="n">reanaly</span><span class="o">...&gt;</span>
+</pre></div>
+</div>
+<p>The dimension names and sizes for each axis: <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.dims.html">ds.dims</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">dims</span>
+
+<span class="n">Frozen</span><span class="p">({</span><span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="mi">2920</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="mi">53</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Coordinate variable labels and time for each point: <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.coords.html">ds.coords</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">coords</span>
+
+<span class="n">Coordinates</span><span class="p">:</span>
+  <span class="o">*</span> <span class="n">lat</span>      <span class="p">(</span><span class="n">lat</span><span class="p">)</span> <span class="n">float32</span> <span class="mf">75.0</span> <span class="mf">72.5</span> <span class="mf">70.0</span> <span class="mf">67.5</span> <span class="mf">65.0</span> <span class="o">...</span> <span class="mf">25.0</span> <span class="mf">22.5</span> <span class="mf">20.0</span> <span class="mf">17.5</span> <span class="mf">15.0</span>
+  <span class="o">*</span> <span class="n">lon</span>      <span class="p">(</span><span class="n">lon</span><span class="p">)</span> <span class="n">float32</span> <span class="mf">200.0</span> <span class="mf">202.5</span> <span class="mf">205.0</span> <span class="mf">207.5</span> <span class="o">...</span> <span class="mf">322.5</span> <span class="mf">325.0</span> <span class="mf">327.5</span> <span class="mf">330.0</span>
+  <span class="o">*</span> <span class="n">time</span>     <span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span> <span class="mi">2013</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="o">...</span> <span class="mi">2014</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">31</span><span class="n">T18</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+
+</pre></div>
+</div>
+<p>And lastly, the dictionary of atributes: <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.attrs.html">ds.attrs</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">attrs</span>
+
+<span class="p">{</span><span class="s1">&#39;Conventions&#39;</span><span class="p">:</span> <span class="s1">&#39;COARDS&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;4x daily NMC reanalysis (1948)&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Data is from NMC initialized reanalysis</span><span class="se">\n</span><span class="s1">(4x/day).  These are the 0.9950 sigma level values.&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;platform&#39;</span><span class="p">:</span> <span class="s1">&#39;Model&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;references&#39;</span><span class="p">:</span> <span class="s1">&#39;http://www.esrl.noaa.gov/psd/data/gridded/data.ncep.reanalysis.html&#39;</span><span class="p">}</span>
+
+</pre></div>
+</div>
+<p>We can use <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.groupby.html">xarray.DataArray.groupby</a> to caculate average monthly temperatures and anomalies.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate monthly climatology</span>
+<span class="n">climatology</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+<span class="c1"># calculate anomalies</span>
+<span class="n">anomalies</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">climatology</span>
+
+</pre></div>
+</div>
+</section>
+<section id="extracting-data-or-indexing">
+<h2>Extracting data or “indexing”<a class="headerlink" href="#extracting-data-or-indexing" title="Permalink to this headline">#</a></h2>
+<p>Xarray supports <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/indexing.html">indexing routines</a> that combine the best features of NumPy and pandas for data selection.:</p>
+<ul class="simple">
+<li><p>label-based indexing using .sel</p></li>
+<li><p>position-based indexing using .isel</p></li>
+</ul>
+<p><strong>Example of position based selection:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">da</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+     <span class="p">[</span>
+         <span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2000-01-01&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">4</span><span class="p">)),</span>
+         <span class="p">(</span><span class="s2">&quot;space&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;IA&quot;</span><span class="p">,</span> <span class="s2">&quot;IL&quot;</span><span class="p">,</span> <span class="s2">&quot;IN&quot;</span><span class="p">]),</span>
+     <span class="p">],</span>
+   <span class="p">)</span>
+</pre></div>
+</div>
+<p>We enter <code class="docutils literal notranslate"><span class="pre">da</span></code> to see the DataArray</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>    <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+ <span class="n">array</span><span class="p">([[</span><span class="mf">0.1459828</span> <span class="p">,</span> <span class="mf">0.5703558</span> <span class="p">,</span> <span class="mf">0.74967209</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.80313568</span><span class="p">,</span> <span class="mf">0.83131726</span><span class="p">,</span> <span class="mf">0.94946361</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.62060118</span><span class="p">,</span> <span class="mf">0.77879503</span><span class="p">,</span> <span class="mf">0.57976898</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.82277328</span><span class="p">,</span> <span class="mf">0.5918192</span> <span class="p">,</span> <span class="mf">0.57177288</span><span class="p">]])</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+ <span class="n">time</span>  <span class="p">(</span><span class="n">time</span><span class="p">)</span>   <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="o">...</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">04</span>
+ <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>            <span class="o">&lt;</span><span class="n">U2</span>  <span class="s1">&#39;IA&#39;</span> <span class="s1">&#39;IL&#39;</span> <span class="s1">&#39;IN&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If we enter <code class="docutils literal notranslate"><span class="pre">da[:2]</span></code>, we get rows 0 and 1 of the array, and everything else.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>    <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+ <span class="n">array</span><span class="p">([[</span><span class="mf">0.1459828</span> <span class="p">,</span> <span class="mf">0.5703558</span> <span class="p">,</span> <span class="mf">0.74967209</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.80313568</span><span class="p">,</span> <span class="mf">0.83131726</span><span class="p">,</span> <span class="mf">0.94946361</span><span class="p">]])</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+ <span class="n">time</span>  <span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>
+ <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>           <span class="o">&lt;</span><span class="n">U2</span> <span class="s1">&#39;IA&#39;</span> <span class="s1">&#39;IL&#39;</span> <span class="s1">&#39;IN&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By entering <code class="docutils literal notranslate"><span class="pre">da[0,0]</span></code> we will get the 0-th element of every variable in the DataArray</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>
+ <span class="n">array</span><span class="p">(</span><span class="mf">0.1459828</span><span class="p">)</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+ <span class="n">time</span>  <span class="p">()</span>  <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>  <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span>
+ <span class="n">space</span> <span class="p">()</span>             <span class="o">&lt;</span><span class="n">U2</span>  <span class="s1">&#39;IA&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally if we enter <code class="docutils literal notranslate"><span class="pre">da[:,</span> <span class="pre">[2,1]]</span></code>, we get all the values of the array and</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>    <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+ <span class="n">array</span><span class="p">([[</span><span class="mf">0.74967209</span><span class="p">,</span> <span class="mf">0.5703558</span> <span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.94946361</span><span class="p">,</span> <span class="mf">0.83131726</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.57976898</span><span class="p">,</span> <span class="mf">0.77879503</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.57177288</span><span class="p">,</span> <span class="mf">0.5918192</span> <span class="p">]])</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+<span class="n">time</span>  <span class="p">(</span><span class="n">time</span><span class="p">)</span>  <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>  <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="o">...</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">04</span>
+<span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>            <span class="o">&lt;</span><span class="n">U2</span>  <span class="s1">&#39;IN&#39;</span> <span class="s1">&#39;IL&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example of label-based indexing using <em>.isel</em></strong></p>
+<p>Index by integer array indices:
+<code class="docutils literal notranslate"><span class="pre">da.isel(space=0,</span> <span class="pre">time=slice(None,</span> <span class="pre">2))</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span> <span class="n">time</span><span class="p">:</span> <span class="mi">2</span>
+ <span class="n">array</span><span class="p">([</span><span class="mf">0.1459828</span> <span class="p">,</span> <span class="mf">0.80313568</span><span class="p">])</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+ <span class="n">time</span>  <span class="p">(</span><span class="n">time</span><span class="p">)</span>  <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>   <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>
+ <span class="n">space</span> <span class="p">()</span>                 <span class="o">&lt;</span><span class="n">U2</span>   <span class="s1">&#39;IA&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>index by dimension coordinate labels:
+<code class="docutils literal notranslate"><span class="pre">da.sel(time=slice(&quot;2000-01-01&quot;,</span> <span class="pre">&quot;2000-01-02&quot;))</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>  <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+ <span class="n">array</span><span class="p">([[</span><span class="mf">0.1459828</span> <span class="p">,</span> <span class="mf">0.5703558</span> <span class="p">,</span> <span class="mf">0.74967209</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.80313568</span><span class="p">,</span> <span class="mf">0.83131726</span><span class="p">,</span> <span class="mf">0.94946361</span><span class="p">]])</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+ <span class="n">time</span> <span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>
+ <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>           <span class="o">&lt;</span><span class="n">U2</span> <span class="s1">&#39;IA&#39;</span> <span class="s1">&#39;IL&#39;</span> <span class="s1">&#39;IN&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Selecting the 0-th element: <code class="docutils literal notranslate"><span class="pre">da.isel(space=[0],</span> <span class="pre">time=[0])</span></code> (same as <code class="docutils literal notranslate"><span class="pre">da[0,0]</span></code>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>  <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+ <span class="n">array</span><span class="p">([[</span><span class="mf">0.1459828</span><span class="p">]])</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+ <span class="n">time</span>  <span class="p">(</span><span class="n">time</span><span class="p">)</span>  <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>  <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span>
+ <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>            <span class="o">&lt;</span><span class="n">U2</span>  <span class="s1">&#39;IA&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Selecting a time slice: <code class="docutils literal notranslate"><span class="pre">da.sel(time=&quot;2000-01-01&quot;)</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span> <span class="p">(</span><span class="n">space</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+ <span class="n">array</span><span class="p">([</span><span class="mf">0.1459828</span> <span class="p">,</span> <span class="mf">0.5703558</span> <span class="p">,</span> <span class="mf">0.74967209</span><span class="p">])</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+ <span class="n">time</span>  <span class="p">()</span>  <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>  <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span>
+ <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>        <span class="o">&lt;</span><span class="n">U2</span>  <span class="s1">&#39;IA&#39;</span> <span class="s1">&#39;IL&#39;</span> <span class="s1">&#39;IN&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="dropping-labels-and-dimensions">
+<h2>Dropping labels and dimensions<a class="headerlink" href="#dropping-labels-and-dimensions" title="Permalink to this headline">#</a></h2>
+<hr class="docutils" />
+<p>Here we’ll initialize a DataArray object by wrapping a plain NumPy array, and explore a few of its properties.</p>
+</section>
+<section id="xarray-installation-and-dependencies">
+<h2>Xarray installation and dependencies.<a class="headerlink" href="#xarray-installation-and-dependencies" title="Permalink to this headline">#</a></h2>
+<p><strong>For netDCF and IO</strong>: There is a set of optional dependencies when installing Xarray:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/Unidata/netcdf4-python">netCDF4</a> if reading/writing netCDF files with Xarray.</p></li>
+<li><p><a class="reference external" href="https://scipy.org/">scipy</a>, used reading/writing netCDF3.</p></li>
+<li><p><a class="reference external" href="https://zarr.readthedocs.io/en/stable/">zarr</a> for chunked, compressed, N-dimensional arrays.</p></li>
+<li><p><a class="reference external" href="https://github.com/rasterio/rasterio">rasterio</a> for reading and writing geospatial raster datasets.</p></li>
+</ul>
+<p><strong>For accelerating Xarray</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://scipy.org/">scipy</a> for enabling interpolation features for xarray objects.</p></li>
+<li><p><a class="reference external" href="https://github.com/pydata/bottleneck">bottleneck</a> fast NumPy functions for xarray.</p></li>
+</ul>
+<p><strong>For parallel computing</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.dask.org/en/stable/">dask.array</a> for parallel computing in Python.</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+</section>
+<section id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/index.html">Xarray Documentation</a>.</p></li>
+<li><p><a class="reference external" href="https://foundations.projectpythia.org/core/xarray.html">Xarray</a>. Project Pythia.</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro-geo-data-sci.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction to Geospacial Data Science</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="cloud-native-data.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Cloud Native Data in Geosciences.</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Carlos Lizárraga <br> Data Science Institute <br> University of Arizona<br><br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
