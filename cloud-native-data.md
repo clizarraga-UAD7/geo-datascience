@@ -60,6 +60,9 @@ The GeoTIFF file format has long been thought of as only suitable for raw data: 
 
 A [Cloud Optimized GeoTIFF (COG)](https://www.cogeo.org/) is a regular [GeoTIFF file](https://en.wikipedia.org/wiki/GeoTIFF), aimed at being hosted on a HTTP file server, with an internal organization that enables more efficient workflows on the cloud. It does this by leveraging the ability of clients issuing ​HTTP GET range requests to ask for just the parts of a file they need.
 
+Built to support efficient tile-by-tile access to large collections of geospatial imagery, the COG has provided an excellent template for the development of other cloud-optimized data formats (e.g. Zarr).
+Like many open source projects, the development and production of COGs has lead to innovation in other areas as well. One example of such innovation is the development of the SpatioTemporal Asset Catalog (STAC).
+
 
 ### COPC
 

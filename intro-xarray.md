@@ -59,6 +59,7 @@ You can find the complete set of `xarray` function in the [online documentation]
 | **Selection**   |   |
 |  [`Dataset.sel()`](https://docs.xarray.dev/en/stable/generated/xarray.Dataset.sel.html) | Returns a new dataset with each array indexed by labels along the specified dimension(s). |
 | [`Dataset.isel()`](https://docs.xarray.dev/en/stable/generated/xarray.Dataset.isel.html)   |  Returns a new dataset with each array indexed along the specified dimension(s). |
+| [`DataArray.where()`](https://docs.xarray.dev/en/stable/generated/xarray.DataArray.where.html)   |  Filter elements from this object according to a condition. |
 | [`Dataset.drop_sel()`](https://docs.xarray.dev/en/stable/generated/xarray.Dataset.drop_sel.html)   |  Drop index labels from this dataset. |
 | [`Dataset.drop_isel()`](https://docs.xarray.dev/en/stable/generated/xarray.Dataset.drop_isel.html)  | Drop index positions from this Dataset.  |
 |[`Dataset.drop_dims()`](https://docs.xarray.dev/en/stable/generated/xarray.Dataset.drop_dims.html)   | Drop dimensions and associated variables from this dataset.  |
@@ -362,21 +363,15 @@ ds.attrs
 
 
 
-***
-
-Here we’ll initialize a DataArray object by wrapping a plain NumPy array, and explore a few of its properties.
-
-
-
-
 
 ### Xarray installation and dependencies.
 
 **For netDCF and IO**: There is a set of optional dependencies when installing Xarray:
 * [netCDF4](https://github.com/Unidata/netcdf4-python) if reading/writing netCDF files with Xarray.
 * [scipy](https://scipy.org/), used reading/writing netCDF3.
-* [zarr](https://zarr.readthedocs.io/en/stable/) for chunked, compressed, N-dimensional arrays.
-*   [rasterio](https://github.com/rasterio/rasterio) for reading and writing geospatial raster datasets.
+
+<!-- * [zarr](https://zarr.readthedocs.io/en/stable/) for chunked, compressed, N-dimensional arrays.
+*   [rasterio](https://github.com/rasterio/rasterio) for reading and writing geospatial raster datasets. -->
 
 **For accelerating Xarray**:
 * [scipy](https://scipy.org/) for enabling interpolation features for xarray objects.
@@ -394,6 +389,7 @@ Here we’ll initialize a DataArray object by wrapping a plain NumPy array, and 
 * [Xarray User Guide](https://docs.xarray.dev/en/stable/user-guide/index.html)
 * [Xarray API Reference](https://docs.xarray.dev/en/stable/api.html)
 * [Xarray](https://foundations.projectpythia.org/core/xarray.html). Project Pythia.
+* [Introduction to Python - ARGO float data](https://datalab.marine.rutgers.edu/2020/11/introduction-to-python-argo-float-data/). Ocean Data Labs. Rutgers University.
 
 <!-- Move this to different file
 * [Xarray-spatial Documentation](https://xarray-spatial.org)

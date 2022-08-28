@@ -570,37 +570,40 @@ title="Print to PDF"
 <tr class="row-odd"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.isel.html"><code class="docutils literal notranslate"><span class="pre">Dataset.isel()</span></code></a></p></td>
 <td class="text-align:left"><p>Returns a new dataset with each array indexed along the specified dimension(s).</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.drop_sel.html"><code class="docutils literal notranslate"><span class="pre">Dataset.drop_sel()</span></code></a></p></td>
+<tr class="row-even"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.where.html"><code class="docutils literal notranslate"><span class="pre">DataArray.where()</span></code></a></p></td>
+<td class="text-align:left"><p>Filter elements from this object according to a condition.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.drop_sel.html"><code class="docutils literal notranslate"><span class="pre">Dataset.drop_sel()</span></code></a></p></td>
 <td class="text-align:left"><p>Drop index labels from this dataset.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.drop_isel.html"><code class="docutils literal notranslate"><span class="pre">Dataset.drop_isel()</span></code></a></p></td>
+<tr class="row-even"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.drop_isel.html"><code class="docutils literal notranslate"><span class="pre">Dataset.drop_isel()</span></code></a></p></td>
 <td class="text-align:left"><p>Drop index positions from this Dataset.</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.drop_dims.html"><code class="docutils literal notranslate"><span class="pre">Dataset.drop_dims()</span></code></a></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.drop_dims.html"><code class="docutils literal notranslate"><span class="pre">Dataset.drop_dims()</span></code></a></p></td>
 <td class="text-align:left"><p>Drop dimensions and associated variables from this dataset.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.drop_vars.html"><code class="docutils literal notranslate"><span class="pre">Dataset.drop_vars()</span></code></a></p></td>
+<tr class="row-even"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.drop_vars.html"><code class="docutils literal notranslate"><span class="pre">Dataset.drop_vars()</span></code></a></p></td>
 <td class="text-align:left"><p>Drop variables from this dataset.</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><strong>Basic array Math</strong></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><strong>Basic array Math</strong></p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">arr+3</span></code>, <code class="docutils literal notranslate"><span class="pre">arr*3</span></code>,…</p></td>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">arr+3</span></code>, <code class="docutils literal notranslate"><span class="pre">arr*3</span></code>,…</p></td>
 <td class="text-align:left"><p>Arithmetic operations by a constant (+, -, *, /)</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">np.abs(arr)</span></code>, <code class="docutils literal notranslate"><span class="pre">np.sqrt(arr)</span></code>, <code class="docutils literal notranslate"><span class="pre">np.sin(arr)</span></code>, …</p></td>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">np.abs(arr)</span></code>, <code class="docutils literal notranslate"><span class="pre">np.sqrt(arr)</span></code>, <code class="docutils literal notranslate"><span class="pre">np.sin(arr)</span></code>, …</p></td>
 <td class="text-align:left"><p>Apply any <a class="reference external" href="https://numpy.org/doc/stable/reference/routines.math.html">Numpy mathematical function</a> to the dataset array values.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">arr&#64;arr</span></code></p></td>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">arr&#64;arr</span></code></p></td>
 <td class="text-align:left"><p>Array muliplication <code class="docutils literal notranslate"><span class="pre">&#64;</span></code></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">arr.round(2)</span></code></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">arr.round(2)</span></code></p></td>
 <td class="text-align:left"><p>Round array values to 2 decomals.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">arr.T</span></code></p></td>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">arr.T</span></code></p></td>
 <td class="text-align:left"><p>The transposed array.</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"> <span class="pre">arr</span></code></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"> <span class="pre">arr</span></code></p></td>
 <td class="text-align:left"><p>The array accepts any attributes and methods as any N-dimensional array described in <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html">numpy.ndarray</a></p></td>
 </tr>
 </tbody>
@@ -855,17 +858,15 @@ title="Print to PDF"
 
 </pre></div>
 </div>
-<hr class="docutils" />
-<p>Here we’ll initialize a DataArray object by wrapping a plain NumPy array, and explore a few of its properties.</p>
 <section id="xarray-installation-and-dependencies">
 <h2>Xarray installation and dependencies.<a class="headerlink" href="#xarray-installation-and-dependencies" title="Permalink to this headline">#</a></h2>
 <p><strong>For netDCF and IO</strong>: There is a set of optional dependencies when installing Xarray:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/Unidata/netcdf4-python">netCDF4</a> if reading/writing netCDF files with Xarray.</p></li>
 <li><p><a class="reference external" href="https://scipy.org/">scipy</a>, used reading/writing netCDF3.</p></li>
-<li><p><a class="reference external" href="https://zarr.readthedocs.io/en/stable/">zarr</a> for chunked, compressed, N-dimensional arrays.</p></li>
-<li><p><a class="reference external" href="https://github.com/rasterio/rasterio">rasterio</a> for reading and writing geospatial raster datasets.</p></li>
 </ul>
+<!-- * [zarr](https://zarr.readthedocs.io/en/stable/) for chunked, compressed, N-dimensional arrays.
+*   [rasterio](https://github.com/rasterio/rasterio) for reading and writing geospatial raster datasets. -->
 <p><strong>For accelerating Xarray</strong>:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://scipy.org/">scipy</a> for enabling interpolation features for xarray objects.</p></li>
@@ -886,6 +887,7 @@ title="Print to PDF"
 <li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/index.html">Xarray User Guide</a></p></li>
 <li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/api.html">Xarray API Reference</a></p></li>
 <li><p><a class="reference external" href="https://foundations.projectpythia.org/core/xarray.html">Xarray</a>. Project Pythia.</p></li>
+<li><p><a class="reference external" href="https://datalab.marine.rutgers.edu/2020/11/introduction-to-python-argo-float-data/">Introduction to Python - ARGO float data</a>. Ocean Data Labs. Rutgers University.</p></li>
 </ul>
 <!-- Move this to different file
 * [Xarray-spatial Documentation](https://xarray-spatial.org)

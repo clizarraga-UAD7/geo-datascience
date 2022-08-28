@@ -288,6 +288,7 @@ da.drop_vars("time")
 # 
 # The Argo robot instruments drift along the ocean and collect data which are stored in netCDF format and can be [acccessed via HTTP and FTP](https://argo.ucsd.edu/data/data-from-gdacs/).
 # 
+# Fot this example, we download the file: [nodc_4901112_prof.nc](https://www.ncei.noaa.gov/data/oceans/argo/gadr/data/meds/4901112/)
 
 # In[28]:
 

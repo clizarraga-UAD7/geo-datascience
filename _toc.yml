@@ -8,8 +8,9 @@ chapters:
 - file: intro-xarray
 - file: cloud-native-data
 - file: JNBooks/XarrayExample1.ipynb
-- file: notebooks.ipynb
-- file: reference.bib
+
+# file: notebooks.ipynb
+# file: reference.bib
 
 # Notebooks/XarrayZarrExample.ipynb 
 # Notebooks/CloudNativeDataExamples.ipynb
