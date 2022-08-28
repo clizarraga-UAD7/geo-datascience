@@ -1,8 +1,20 @@
 ## Cloud Native Data in Geosciences.
 
+<img src="https://opensource.com/sites/default/files/lead-images/rh_003601_05_mech_osyearbook2016_cloud_cc.png" width=480>
+
+(Image credit: Opensource.com)
+
 There is a shift is happening in the way we use Earth Science data to do new research. Cloud data storage technologies have advanced at a fast pace that we now can find and explore massive amounts of data online via the web browser. At the same time we can find online platforms with specialized software and hardware that offer general data science and machine learning tools to explore these online datasets.
 
 With these advances it is easier to foster collaborations, promote data-driven discovery, scientific innovation, transparency and reproducibility.
+
+## Open Architectures
+
+The new approach to data sharing, focused on object storage rather than file downloads. This cloud platform approach is scalable and instead of moving data to processing systems near users as is the tradition, brings processing, computing, analytics and visualization to data – so called data proximate workbench capabilities, sometimes also referred to as server-side processing.
+
+<img src="https://miro.medium.com/max/1400/1*FkR2h8f_Lut00Uo_Pxogvg.png" width=480>
+
+(Open Architecture for scalable cloud-based data analytics. From Abernathey, Ryan (2020): Data Access Modes in Science.)
 
 ***
 
@@ -53,16 +65,19 @@ Read more about the [GeoJSON format](https://datatracker.ietf.org/doc/html/rfc79
 
 ### COG
 
+The [TIFF file format (Tagged Image File Format)](https://en.wikipedia.org/wiki/TIFF) is a very old format, dating back to 1992, which is great for high-resolution, verbatim [raster images](https://en.wikipedia.org/wiki/Raster_graphics). It’s still used a bit in high-end photography, but has really grown a second life in cartography: a variation called [GeoTIFF](https://en.wikipedia.org/wiki/GeoTIFF) is used to share satellite images and other satellite data.
 
-The TIFF file format (Tagged Image File Format) is a very old format, dating back to 1992, which is great for high-resolution, verbatim raster images. It’s still used a bit in high-end photography, but has really grown a second life in cartography: a variation called GeoTIFF is used to share satellite images and other satellite data.
-
-The GeoTIFF file format has long been thought of as only suitable for raw data: if you wanted to display it on a map, you’d convert it into tiles. If you wanted a static image, you’d render it into a PNG or JPEG. But Cloud-Optimized GeoTIFF means that GeoTIFFs can be a bit more accessible than they used to be.
+The GeoTIFF file format has long been thought of as only suitable for raw data: if you wanted to display it on a map, you’d convert it into tiles. If you wanted a static image, you’d render it into a PNG or JPEG. But [Cloud-Optimized GeoTIFF](https://en.wikipedia.org/wiki/GeoTIFF#Cloud_Optimised_GeoTIFF) means that GeoTIFFs can be a bit more accessible than they used to be.
 
 A [Cloud Optimized GeoTIFF (COG)](https://www.cogeo.org/) is a regular [GeoTIFF file](https://en.wikipedia.org/wiki/GeoTIFF), aimed at being hosted on a HTTP file server, with an internal organization that enables more efficient workflows on the cloud. It does this by leveraging the ability of clients issuing ​HTTP GET range requests to ask for just the parts of a file they need.
 
-Built to support efficient tile-by-tile access to large collections of geospatial imagery, the COG has provided an excellent template for the development of other cloud-optimized data formats (e.g. Zarr).
-Like many open source projects, the development and production of COGs has lead to innovation in other areas as well. One example of such innovation is the development of the SpatioTemporal Asset Catalog (STAC).
+Built to support efficient tile-by-tile access to large collections of geospatial imagery, the COG has provided an excellent template for the development of other cloud-optimized data formats (e.g. [Zarr](https://zarr.readthedocs.io/en/stable/index.html)).
 
+Like many open source projects, the development and production of COGs has lead to innovation in other areas as well. One example of such innovation is the development of the [SpatioTemporal Asset Catalog (STAC)](https://stacspec.org/en).
+
+The SpatioTemporal Asset Catalog (STAC) specification provides a common language to describe a range of geospatial information, so it can more easily be indexed and discovered. A ‘spatiotemporal asset' is any file that represents information about the earth captured in a certain space and time.
+
+COGs and STAC provide the building blocks for a flexible and accessible system for geospatial data analysis (geospatial imagery). STAC provides a system for describing large collections of geospatial data stored in cloud object store and COG provide efficient access to pieces of those collections without the need to download the data first.
 
 ### COPC
 
@@ -74,20 +89,32 @@ Like many open source projects, the development and production of COGs has lead 
 ### Spatio Temporal Asset Catalogs (STAC)
 
 
+[STAC](https://stacspec.org/en) provides a common language to describe a range of spatiotemporal information, so that it can be easily indexed and discovered.
 
+The goal is for all providers of spatiotemporal assets (Imagery, SAR, Point Clouds, Data Cubes, Full Motion Video, etc) to expose their data as SpatioTemporal Asset Catalogs (STAC), so that new code doesn't need to be written whenever a new data set or API is released.
 
+A STAC item is the foundational building block of STAC. It is [GeoJSON](https://en.wikipedia.org/wiki/GeoJSON) supplemented with additional metadata that enables clients to traverse through catalogs.
+
+The [STAC Index](https://stacindex.org) stores STAC Catalogs, Collections, APIs, Software and Tools.
+
+To access the STAC Index catalogs, the [`pystac-client`](https://github.com/stac-utils/pystac-client) libary needs to be installed.
 
 
 
 
 
 ## References
-* [Gentemann, C. L., Holdgraf, C., Abernathey, R., Crichton, D., Colliander, J., Kearns, E. J., et al. (2021). Science storms the cloud. AGU Advances, 2, e2020AV000354](https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2020AV000354)
-* [Ryan P. Abernathey _et al._ (2021) Cloud-Native Repositories for Big Scientific Data. Computing in Science and Engineering. IEEE Computer Society](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9354557)
+
+* [Cloud Optimized GeoTIFF ](https://www.cogeo.org). An imagery format for cloud-native geospatial processing. COGEO.org.
+* Gentemann, C. L., Holdgraf, C., Abernathey, R., Crichton, D., Colliander, J., Kearns, E. J., et al. (2021). [Science storms the cloud. AGU Advances, 2, e2020AV000354](https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2020AV000354)
+* Ryan P. Abernathey _et al._ (2021) [Cloud-Native Repositories for Big Scientific Data. Computing in Science and Engineering. IEEE Computer Society](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9354557)
+* Abernathey, R. (2020). [Closed Platfoms vs. Open Architectures for Cloud-Native Earth System Analytics](https://medium.com/pangeo/closed-platforms-vs-open-architectures-for-cloud-native-earth-system-analytics-1ad88708ebb6). Pangeo, Medium.
+* Holmes, C. (2021). [STAC Specification 1.0.0 Released](https://medium.com/radiant-earth-insights/stac-specification-1-0-0-released-c59e8c848077). Radiant Earth Insights, Medium.
+* Holmes, C. (2018).[Cloud Native Geoprocessing](https://medium.com/planet-stories/tagged/cloud-native-geospatial). Planet Stories, Medium.
 
 ***
 Created: 08/18/2022;
-Updated: 08/22/2022
+Updated: 08/27/2022
 
 Carlos Lizárraga.
 UA Data Science Institute.

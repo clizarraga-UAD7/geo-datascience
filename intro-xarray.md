@@ -1,5 +1,5 @@
 <!-- <font color='royalblue'>test blue color font</font> -->
-(Draft as 08/22/2022)
+(Draft as 08/28/2022)
 
 ## Introduction to Xarray
 
@@ -44,7 +44,7 @@ import xarray as xr
 You can find the complete set of `xarray` function in the [online documentation](https://docs.xarray.dev/en/stable/api.html). Here is a short list of possible functions:
 
 | Function | Description |
-| :--: | :-- |
+| :-- | :-- |
 | **Read / Write**   |   |   |
 | [`xr.load_dataset()`](https://docs.xarray.dev/en/stable/generated/xarray.load_dataset.html) | Open, load into memory, and close a Dataset from a netCDF file `(*.nc)` or file-like object. |
 | [`xr.open_dataset()`](https://docs.xarray.dev/en/stable/generated/xarray.open_dataset.html) | Open and decode a dataset from a netCDF file or file-like object. |
@@ -81,8 +81,8 @@ Xarray objects borrow the [isnull()](https://docs.xarray.dev/en/stable/generated
 
  Xarray supports [indexing routines](https://docs.xarray.dev/en/stable/user-guide/indexing.html) that combine the best features of NumPy and pandas for data selection.:
 
- * label-based indexing using .sel
- * position-based indexing using .isel
+ * label-based indexing using `.sel`
+ * position-based indexing using `.isel`
 
 Lets create the following xarray.DataArray
 
@@ -242,7 +242,7 @@ Attributes: (0)
 
 
 
-## Example of DataArray object
+## :memo: Example of DataArray object
 
 The [DataArray](https://docs.xarray.dev/en/stable/user-guide/data-structures.html#dataarray) is one of the basic building blocks of Xarray. It provides a numpy.ndarray-like object that expands to provide two critical pieces of functionality:
 
@@ -361,7 +361,7 @@ ds.attrs
 
  ```
 
-
+:memo: **[Please see Jupyter Notebook Xarray Example](JNBooks/XarrayExample1.ipynb)**
 
 
 ### Xarray installation and dependencies.

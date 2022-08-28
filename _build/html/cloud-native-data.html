@@ -134,11 +134,6 @@ const thebe_selector_output = ".output, .cell_output"
    Xarray example Jupyter Notebook
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="notebooks.html">
-   Content with notebooks
-  </a>
- </li>
 </ul>
 
     </div>
@@ -322,6 +317,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#open-architectures">
+   Open Architectures
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cloud-data-types">
    Cloud Data Types
   </a>
@@ -378,6 +378,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#open-architectures">
+   Open Architectures
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cloud-data-types">
    Cloud Data Types
   </a>
@@ -421,8 +426,16 @@ title="Print to PDF"
                 
   <section id="cloud-native-data-in-geosciences">
 <h1>Cloud Native Data in Geosciences.<a class="headerlink" href="#cloud-native-data-in-geosciences" title="Permalink to this headline">#</a></h1>
+<img src="https://opensource.com/sites/default/files/lead-images/rh_003601_05_mech_osyearbook2016_cloud_cc.png" width=480>
+<p>(Image credit: <a class="reference external" href="http://Opensource.com">Opensource.com</a>)</p>
 <p>There is a shift is happening in the way we use Earth Science data to do new research. Cloud data storage technologies have advanced at a fast pace that we now can find and explore massive amounts of data online via the web browser. At the same time we can find online platforms with specialized software and hardware that offer general data science and machine learning tools to explore these online datasets.</p>
 <p>With these advances it is easier to foster collaborations, promote data-driven discovery, scientific innovation, transparency and reproducibility.</p>
+</section>
+<section id="open-architectures">
+<h1>Open Architectures<a class="headerlink" href="#open-architectures" title="Permalink to this headline">#</a></h1>
+<p>The new approach to data sharing, focused on object storage rather than file downloads. This cloud platform approach is scalable and instead of moving data to processing systems near users as is the tradition, brings processing, computing, analytics and visualization to data – so called data proximate workbench capabilities, sometimes also referred to as server-side processing.</p>
+<img src="https://miro.medium.com/max/1400/1*FkR2h8f_Lut00Uo_Pxogvg.png" width=480>
+<p>(Open Architecture for scalable cloud-based data analytics. From Abernathey, Ryan (2020): Data Access Modes in Science.)</p>
 </section>
 <hr class="docutils" />
 <section id="cloud-data-types">
@@ -489,28 +502,39 @@ FeatureCollection).</p>
 </section>
 <section id="cog">
 <h2>COG<a class="headerlink" href="#cog" title="Permalink to this headline">#</a></h2>
-<p>The TIFF file format (Tagged Image File Format) is a very old format, dating back to 1992, which is great for high-resolution, verbatim raster images. It’s still used a bit in high-end photography, but has really grown a second life in cartography: a variation called GeoTIFF is used to share satellite images and other satellite data.</p>
-<p>The GeoTIFF file format has long been thought of as only suitable for raw data: if you wanted to display it on a map, you’d convert it into tiles. If you wanted a static image, you’d render it into a PNG or JPEG. But Cloud-Optimized GeoTIFF means that GeoTIFFs can be a bit more accessible than they used to be.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/TIFF">TIFF file format (Tagged Image File Format)</a> is a very old format, dating back to 1992, which is great for high-resolution, verbatim <a class="reference external" href="https://en.wikipedia.org/wiki/Raster_graphics">raster images</a>. It’s still used a bit in high-end photography, but has really grown a second life in cartography: a variation called <a class="reference external" href="https://en.wikipedia.org/wiki/GeoTIFF">GeoTIFF</a> is used to share satellite images and other satellite data.</p>
+<p>The GeoTIFF file format has long been thought of as only suitable for raw data: if you wanted to display it on a map, you’d convert it into tiles. If you wanted a static image, you’d render it into a PNG or JPEG. But <a class="reference external" href="https://en.wikipedia.org/wiki/GeoTIFF#Cloud_Optimised_GeoTIFF">Cloud-Optimized GeoTIFF</a> means that GeoTIFFs can be a bit more accessible than they used to be.</p>
 <p>A <a class="reference external" href="https://www.cogeo.org/">Cloud Optimized GeoTIFF (COG)</a> is a regular <a class="reference external" href="https://en.wikipedia.org/wiki/GeoTIFF">GeoTIFF file</a>, aimed at being hosted on a HTTP file server, with an internal organization that enables more efficient workflows on the cloud. It does this by leveraging the ability of clients issuing ​HTTP GET range requests to ask for just the parts of a file they need.</p>
-<p>Built to support efficient tile-by-tile access to large collections of geospatial imagery, the COG has provided an excellent template for the development of other cloud-optimized data formats (e.g. Zarr).
-Like many open source projects, the development and production of COGs has lead to innovation in other areas as well. One example of such innovation is the development of the SpatioTemporal Asset Catalog (STAC).</p>
+<p>Built to support efficient tile-by-tile access to large collections of geospatial imagery, the COG has provided an excellent template for the development of other cloud-optimized data formats (e.g. <a class="reference external" href="https://zarr.readthedocs.io/en/stable/index.html">Zarr</a>).</p>
+<p>Like many open source projects, the development and production of COGs has lead to innovation in other areas as well. One example of such innovation is the development of the <a class="reference external" href="https://stacspec.org/en">SpatioTemporal Asset Catalog (STAC)</a>.</p>
+<p>The SpatioTemporal Asset Catalog (STAC) specification provides a common language to describe a range of geospatial information, so it can more easily be indexed and discovered. A ‘spatiotemporal asset’ is any file that represents information about the earth captured in a certain space and time.</p>
+<p>COGs and STAC provide the building blocks for a flexible and accessible system for geospatial data analysis (geospatial imagery). STAC provides a system for describing large collections of geospatial data stored in cloud object store and COG provide efficient access to pieces of those collections without the need to download the data first.</p>
 </section>
 <section id="copc">
 <h2>COPC<a class="headerlink" href="#copc" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="spatio-temporal-asset-catalogs-stac">
 <h2>Spatio Temporal Asset Catalogs (STAC)<a class="headerlink" href="#spatio-temporal-asset-catalogs-stac" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://stacspec.org/en">STAC</a> provides a common language to describe a range of spatiotemporal information, so that it can be easily indexed and discovered.</p>
+<p>The goal is for all providers of spatiotemporal assets (Imagery, SAR, Point Clouds, Data Cubes, Full Motion Video, etc) to expose their data as SpatioTemporal Asset Catalogs (STAC), so that new code doesn’t need to be written whenever a new data set or API is released.</p>
+<p>A STAC item is the foundational building block of STAC. It is <a class="reference external" href="https://en.wikipedia.org/wiki/GeoJSON">GeoJSON</a> supplemented with additional metadata that enables clients to traverse through catalogs.</p>
+<p>The <a class="reference external" href="https://stacindex.org">STAC Index</a> stores STAC Catalogs, Collections, APIs, Software and Tools.</p>
+<p>To access the STAC Index catalogs, the <a class="reference external" href="https://github.com/stac-utils/pystac-client"><code class="docutils literal notranslate"><span class="pre">pystac-client</span></code></a> libary needs to be installed.</p>
 </section>
 </section>
 <section id="references">
 <h1>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
-<li><p><a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2020AV000354">Gentemann, C. L., Holdgraf, C., Abernathey, R., Crichton, D., Colliander, J., Kearns, E. J., et al. (2021). Science storms the cloud. AGU Advances, 2, e2020AV000354</a></p></li>
-<li><p><a class="reference external" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=9354557">Ryan P. Abernathey <em>et al.</em> (2021) Cloud-Native Repositories for Big Scientific Data. Computing in Science and Engineering. IEEE Computer Society</a></p></li>
+<li><p><a class="reference external" href="https://www.cogeo.org">Cloud Optimized GeoTIFF </a>. An imagery format for cloud-native geospatial processing. <a class="reference external" href="http://COGEO.org">COGEO.org</a>.</p></li>
+<li><p>Gentemann, C. L., Holdgraf, C., Abernathey, R., Crichton, D., Colliander, J., Kearns, E. J., et al. (2021). <a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2020AV000354">Science storms the cloud. AGU Advances, 2, e2020AV000354</a></p></li>
+<li><p>Ryan P. Abernathey <em>et al.</em> (2021) <a class="reference external" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=9354557">Cloud-Native Repositories for Big Scientific Data. Computing in Science and Engineering. IEEE Computer Society</a></p></li>
+<li><p>Abernathey, R. (2020). <a class="reference external" href="https://medium.com/pangeo/closed-platforms-vs-open-architectures-for-cloud-native-earth-system-analytics-1ad88708ebb6">Closed Platfoms vs. Open Architectures for Cloud-Native Earth System Analytics</a>. Pangeo, Medium.</p></li>
+<li><p>Holmes, C. (2021). <a class="reference external" href="https://medium.com/radiant-earth-insights/stac-specification-1-0-0-released-c59e8c848077">STAC Specification 1.0.0 Released</a>. Radiant Earth Insights, Medium.</p></li>
+<li><p>Holmes, C. (2018).<a class="reference external" href="https://medium.com/planet-stories/tagged/cloud-native-geospatial">Cloud Native Geoprocessing</a>. Planet Stories, Medium.</p></li>
 </ul>
 <hr class="docutils" />
 <p>Created: 08/18/2022;
-Updated: 08/22/2022</p>
+Updated: 08/27/2022</p>
 <p>Carlos Lizárraga.
 UA Data Science Institute.</p>
 </section>
