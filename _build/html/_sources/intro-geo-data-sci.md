@@ -53,3 +53,10 @@ There is a collection of available Python Libraries to work with spatially distr
 *  Sergio J. Rey, Dani Arribas-Bel, Levi J. Wolf. [Geographic Data Science with Python](https://geographicdata.science/book/intro.html).
 * Michael Szell. [Geospatial Data Science](https://github.com/mszell/geospatialdatascience). University of Copenhagen.
 *  [The Ultimate List of GIS Formats and Geospatial File Extensions](https://gisgeography.com/gis-formats/). GISGeography.
+
+***
+Created: 08/18/2022;
+Updated: 08/22/2022
+
+Carlos Lizárraga.
+UA Data Science Institute.

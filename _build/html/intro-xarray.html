@@ -343,9 +343,16 @@ title="Print to PDF"
      DataArray
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#xarray-basic-functions">
+   Xarray basic functions
+  </a>
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creation-of-a-dataarray-object">
-     Creation of a DataArray object
+    <a class="reference internal nav-link" href="#working-with-missing-data">
+     Working with missing data
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -358,6 +365,13 @@ title="Print to PDF"
      Dropping labels and dimensions
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-of-dataarray-object">
+   Example of DataArray object
+  </a>
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#xarray-installation-and-dependencies">
      Xarray installation and dependencies.
@@ -416,9 +430,16 @@ title="Print to PDF"
      DataArray
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#xarray-basic-functions">
+   Xarray basic functions
+  </a>
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creation-of-a-dataarray-object">
-     Creation of a DataArray object
+    <a class="reference internal nav-link" href="#working-with-missing-data">
+     Working with missing data
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -431,6 +452,13 @@ title="Print to PDF"
      Dropping labels and dimensions
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-of-dataarray-object">
+   Example of DataArray object
+  </a>
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#xarray-installation-and-dependencies">
      Xarray installation and dependencies.
@@ -453,7 +481,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <p><font color='royalblue'>test blue color font</font></p>
+  <!-- <font color='royalblue'>test blue color font</font> -->
+<p>(Draft as 08/22/2022)</p>
 <section id="introduction-to-xarray">
 <h1>Introduction to Xarray<a class="headerlink" href="#introduction-to-xarray" title="Permalink to this headline">#</a></h1>
 <p> <img src="https://docs.xarray.dev/en/v0.9.0/_images/dataset-diagram-logo.png" width=480/>
@@ -484,13 +513,270 @@ title="Print to PDF"
 <img src="https://docs.xarray.dev/en/stable/_images/dataset-diagram.png" width=480>
 <p>DataArray objects also can have a name and can hold arbitrary metadata in the form of their attrs property. Names and attributes are strictly for users and user-written code: xarray makes no attempt to interpret them, and propagates them only in unambiguous cases.</p>
 </section>
-<section id="creation-of-a-dataarray-object">
-<h2>Creation of a DataArray object<a class="headerlink" href="#creation-of-a-dataarray-object" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="xarray-basic-functions">
+<h1>Xarray basic functions<a class="headerlink" href="#xarray-basic-functions" title="Permalink to this headline">#</a></h1>
+<p>To start, load <code class="docutils literal notranslate"><span class="pre">xarray</span></code> into the working memory.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+</pre></div>
+</div>
+<p>You can find the complete set of <code class="docutils literal notranslate"><span class="pre">xarray</span></code> function in the <a class="reference external" href="https://docs.xarray.dev/en/stable/api.html">online documentation</a>. Here is a short list of possible functions:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Function</p></th>
+<th class="text-align:left head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><strong>Read / Write</strong></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.load_dataset.html"><code class="docutils literal notranslate"><span class="pre">xr.load_dataset()</span></code></a></p></td>
+<td class="text-align:left"><p>Open, load into memory, and close a Dataset from a netCDF file <code class="docutils literal notranslate"><span class="pre">(*.nc)</span></code> or file-like object.</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.open_dataset.html"><code class="docutils literal notranslate"><span class="pre">xr.open_dataset()</span></code></a></p></td>
+<td class="text-align:left"><p>Open and decode a dataset from a netCDF file or file-like object.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.to_netcdf.html"><code class="docutils literal notranslate"><span class="pre">xr.DataArray.to_netcdf()</span></code></a></p></td>
+<td class="text-align:left"><p>Write dataset contents to a netCDF file.</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><strong>File information</strong></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">Dataset</span></code></p></td>
+<td class="text-align:left"><p>Will return the structure and values of the xarray Dataset</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.info.html"><code class="docutils literal notranslate"><span class="pre">Dataset.info()</span></code></a></p></td>
+<td class="text-align:left"><p>Concise summary of a xarray Dataset variables and attributes.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.head.html"><code class="docutils literal notranslate"><span class="pre">Dataset.head()</span> <span class="pre">/</span> <span class="pre">Dataset.tail()</span></code></a></p></td>
+<td class="text-align:left"><p>Returns a new dataset with the first / last <em>n</em> values of each array for the specified dimension(s)</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.dims.html"><code class="docutils literal notranslate"><span class="pre">Dataset.dims</span></code></a></p></td>
+<td class="text-align:left"><p>Mapping from dimension names to lengths</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.coords.html"><code class="docutils literal notranslate"><span class="pre">Dataset.coords</span></code></a></p></td>
+<td class="text-align:left"><p>Dictionary of xarray DataArray objects corresponding to coordinate variables</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.attrs.html"><code class="docutils literal notranslate"><span class="pre">Dataset.attrs</span></code></a></p></td>
+<td class="text-align:left"><p>Dictionary of global attributes on this dataset</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><strong>Selection</strong></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.sel.html"><code class="docutils literal notranslate"><span class="pre">Dataset.sel()</span></code></a></p></td>
+<td class="text-align:left"><p>Returns a new dataset with each array indexed by labels along the specified dimension(s).</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.isel.html"><code class="docutils literal notranslate"><span class="pre">Dataset.isel()</span></code></a></p></td>
+<td class="text-align:left"><p>Returns a new dataset with each array indexed along the specified dimension(s).</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.drop_sel.html"><code class="docutils literal notranslate"><span class="pre">Dataset.drop_sel()</span></code></a></p></td>
+<td class="text-align:left"><p>Drop index labels from this dataset.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.drop_isel.html"><code class="docutils literal notranslate"><span class="pre">Dataset.drop_isel()</span></code></a></p></td>
+<td class="text-align:left"><p>Drop index positions from this Dataset.</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.drop_dims.html"><code class="docutils literal notranslate"><span class="pre">Dataset.drop_dims()</span></code></a></p></td>
+<td class="text-align:left"><p>Drop dimensions and associated variables from this dataset.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.drop_vars.html"><code class="docutils literal notranslate"><span class="pre">Dataset.drop_vars()</span></code></a></p></td>
+<td class="text-align:left"><p>Drop variables from this dataset.</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><strong>Basic array Math</strong></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">arr+3</span></code>, <code class="docutils literal notranslate"><span class="pre">arr*3</span></code>,…</p></td>
+<td class="text-align:left"><p>Arithmetic operations by a constant (+, -, *, /)</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">np.abs(arr)</span></code>, <code class="docutils literal notranslate"><span class="pre">np.sqrt(arr)</span></code>, <code class="docutils literal notranslate"><span class="pre">np.sin(arr)</span></code>, …</p></td>
+<td class="text-align:left"><p>Apply any <a class="reference external" href="https://numpy.org/doc/stable/reference/routines.math.html">Numpy mathematical function</a> to the dataset array values.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">arr&#64;arr</span></code></p></td>
+<td class="text-align:left"><p>Array muliplication <code class="docutils literal notranslate"><span class="pre">&#64;</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">arr.round(2)</span></code></p></td>
+<td class="text-align:left"><p>Round array values to 2 decomals.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">arr.T</span></code></p></td>
+<td class="text-align:left"><p>The transposed array.</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"> <span class="pre">arr</span></code></p></td>
+<td class="text-align:left"><p>The array accepts any attributes and methods as any N-dimensional array described in <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html">numpy.ndarray</a></p></td>
+</tr>
+</tbody>
+</table>
+<section id="working-with-missing-data">
+<h2>Working with missing data<a class="headerlink" href="#working-with-missing-data" title="Permalink to this headline">#</a></h2>
+<p>Xarray objects borrow the <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.isnull.html">isnull()</a>, <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.notnull.html">notnull()</a>, <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.count.html">count()</a>, <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.dropna.html">dropna()</a>, <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.fillna.html">fillna()</a>, <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.ffill.html">ffill()</a>, and <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.bfill.html#xarray.DataArray.bfill">bfill()</a> methods for working with missing data from the <a class="reference external" href="https://pandas.pydata.org">pandas</a> library.</p>
+</section>
+<section id="extracting-data-or-indexing">
+<h2>Extracting data or “indexing”<a class="headerlink" href="#extracting-data-or-indexing" title="Permalink to this headline">#</a></h2>
+<p>Xarray supports <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/indexing.html">indexing routines</a> that combine the best features of NumPy and pandas for data selection.:</p>
+<ul class="simple">
+<li><p>label-based indexing using .sel</p></li>
+<li><p>position-based indexing using .isel</p></li>
+</ul>
+<p>Lets create the following xarray.DataArray</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">da</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+     <span class="p">[</span>
+         <span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2000-01-01&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">4</span><span class="p">)),</span>
+         <span class="p">(</span><span class="s2">&quot;space&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;IA&quot;</span><span class="p">,</span> <span class="s2">&quot;IL&quot;</span><span class="p">,</span> <span class="s2">&quot;IN&quot;</span><span class="p">]),</span>
+     <span class="p">],</span>
+   <span class="p">)</span>
+
+</pre></div>
+</div>
+<p>We enter <code class="docutils literal notranslate"><span class="pre">da</span></code> to see the DataArray</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>    <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+ <span class="n">array</span><span class="p">([[</span><span class="mf">0.1459828</span> <span class="p">,</span> <span class="mf">0.5703558</span> <span class="p">,</span> <span class="mf">0.74967209</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.80313568</span><span class="p">,</span> <span class="mf">0.83131726</span><span class="p">,</span> <span class="mf">0.94946361</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.62060118</span><span class="p">,</span> <span class="mf">0.77879503</span><span class="p">,</span> <span class="mf">0.57976898</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.82277328</span><span class="p">,</span> <span class="mf">0.5918192</span> <span class="p">,</span> <span class="mf">0.57177288</span><span class="p">]])</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+ <span class="n">time</span>  <span class="p">(</span><span class="n">time</span><span class="p">)</span>   <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="o">...</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">04</span>
+ <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>            <span class="o">&lt;</span><span class="n">U2</span>  <span class="s1">&#39;IA&#39;</span> <span class="s1">&#39;IL&#39;</span> <span class="s1">&#39;IN&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example of position based selection:</strong></p>
+<p>If we enter <code class="docutils literal notranslate"><span class="pre">da[:2]</span></code>, we get rows 0 and 1 of the array, and everything else.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>    <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+ <span class="n">array</span><span class="p">([[</span><span class="mf">0.1459828</span> <span class="p">,</span> <span class="mf">0.5703558</span> <span class="p">,</span> <span class="mf">0.74967209</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.80313568</span><span class="p">,</span> <span class="mf">0.83131726</span><span class="p">,</span> <span class="mf">0.94946361</span><span class="p">]])</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+ <span class="n">time</span>  <span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>
+ <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>           <span class="o">&lt;</span><span class="n">U2</span> <span class="s1">&#39;IA&#39;</span> <span class="s1">&#39;IL&#39;</span> <span class="s1">&#39;IN&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By entering <code class="docutils literal notranslate"><span class="pre">da[0,0]</span></code> we will get the 0-th element of every variable in the DataArray</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>
+ <span class="n">array</span><span class="p">(</span><span class="mf">0.1459828</span><span class="p">)</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+ <span class="n">time</span>  <span class="p">()</span>  <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>  <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span>
+ <span class="n">space</span> <span class="p">()</span>             <span class="o">&lt;</span><span class="n">U2</span>  <span class="s1">&#39;IA&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally if we enter <code class="docutils literal notranslate"><span class="pre">da[:,</span> <span class="pre">[2,1]]</span></code>, we get all the values of the <code class="docutils literal notranslate"><span class="pre">time</span></code> variable and select the third and second values of the <code class="docutils literal notranslate"><span class="pre">space</span></code> variable in that order.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>    <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+ <span class="n">array</span><span class="p">([[</span><span class="mf">0.74967209</span><span class="p">,</span> <span class="mf">0.5703558</span> <span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.94946361</span><span class="p">,</span> <span class="mf">0.83131726</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.57976898</span><span class="p">,</span> <span class="mf">0.77879503</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.57177288</span><span class="p">,</span> <span class="mf">0.5918192</span> <span class="p">]])</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+<span class="n">time</span>  <span class="p">(</span><span class="n">time</span><span class="p">)</span>  <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>  <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="o">...</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">04</span>
+<span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>            <span class="o">&lt;</span><span class="n">U2</span>  <span class="s1">&#39;IN&#39;</span> <span class="s1">&#39;IL&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example of label-based indexing using <em>.isel</em></strong></p>
+<p>Index by integer array indices:
+<code class="docutils literal notranslate"><span class="pre">da.isel(space=0,</span> <span class="pre">time=slice(None,</span> <span class="pre">2))</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>   <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+ <span class="n">array</span><span class="p">([</span><span class="mf">0.1459828</span> <span class="p">,</span> <span class="mf">0.80313568</span><span class="p">])</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+ <span class="n">time</span>  <span class="p">(</span><span class="n">time</span><span class="p">)</span>  <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>   <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>
+ <span class="n">space</span> <span class="p">()</span>                 <span class="o">&lt;</span><span class="n">U2</span>   <span class="s1">&#39;IA&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>index by dimension coordinate labels:
+<code class="docutils literal notranslate"><span class="pre">da.sel(time=slice(&quot;2000-01-01&quot;,</span> <span class="pre">&quot;2000-01-02&quot;))</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>    <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+ <span class="n">array</span><span class="p">([[</span><span class="mf">0.1459828</span> <span class="p">,</span> <span class="mf">0.5703558</span> <span class="p">,</span> <span class="mf">0.74967209</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.80313568</span><span class="p">,</span> <span class="mf">0.83131726</span><span class="p">,</span> <span class="mf">0.94946361</span><span class="p">]])</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+ <span class="n">time</span> <span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>
+ <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>           <span class="o">&lt;</span><span class="n">U2</span> <span class="s1">&#39;IA&#39;</span> <span class="s1">&#39;IL&#39;</span> <span class="s1">&#39;IN&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Selecting the 0-th element: <code class="docutils literal notranslate"><span class="pre">da.isel(space=[0],</span> <span class="pre">time=[0])</span></code> (same as <code class="docutils literal notranslate"><span class="pre">da[0,0]</span></code>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>  <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+ <span class="n">array</span><span class="p">([[</span><span class="mf">0.1459828</span><span class="p">]])</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+ <span class="n">time</span>  <span class="p">(</span><span class="n">time</span><span class="p">)</span>  <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>  <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span>
+ <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>            <span class="o">&lt;</span><span class="n">U2</span>  <span class="s1">&#39;IA&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Selecting a time slice: <code class="docutils literal notranslate"><span class="pre">da.sel(time=&quot;2000-01-01&quot;)</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>   <span class="p">(</span><span class="n">space</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+ <span class="n">array</span><span class="p">([</span><span class="mf">0.1459828</span> <span class="p">,</span> <span class="mf">0.5703558</span> <span class="p">,</span> <span class="mf">0.74967209</span><span class="p">])</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+ <span class="n">time</span>  <span class="p">()</span>  <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>  <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span>
+ <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>        <span class="o">&lt;</span><span class="n">U2</span>  <span class="s1">&#39;IA&#39;</span> <span class="s1">&#39;IL&#39;</span> <span class="s1">&#39;IN&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="dropping-labels-and-dimensions">
+<h2>Dropping labels and dimensions<a class="headerlink" href="#dropping-labels-and-dimensions" title="Permalink to this headline">#</a></h2>
+<p>The drop_sel() method returns a new object with the listed index labels along a dimension dropped</p>
+<p>Drop 2 space coordinates: <code class="docutils literal notranslate"><span class="pre">da.drop_sel(space=[&quot;IN&quot;,</span> <span class="pre">&quot;IL&quot;])</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>   <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+ <span class="n">array</span><span class="p">([[</span><span class="mf">0.22300306</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.55091584</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.46223584</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.14886755</span><span class="p">]])</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+ <span class="n">time</span>   <span class="p">(</span><span class="n">time</span><span class="p">)</span>   <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>   <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="o">...</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">04</span>
+ <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>              <span class="o">&lt;</span><span class="n">U2</span>   <span class="s1">&#39;IA&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Next, we drop the first value of the <code class="docutils literal notranslate"><span class="pre">time</span></code>and <code class="docutils literal notranslate"><span class="pre">space</span></code> coordinates: <code class="docutils literal notranslate"><span class="pre">da.drop_isel(space=[0],</span> <span class="pre">time=[0])</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>    <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+ <span class="n">array</span><span class="p">([[</span><span class="mf">0.25754302</span><span class="p">,</span> <span class="mf">0.18756148</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.53243459</span><span class="p">,</span> <span class="mf">0.876909</span>  <span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.19766897</span><span class="p">,</span> <span class="mf">0.19531781</span><span class="p">]])</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+ <span class="n">time</span>   <span class="p">(</span><span class="n">time</span><span class="p">)</span>   <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>   <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">04</span>
+ <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>              <span class="o">&lt;</span><span class="n">U2</span>   <span class="s1">&#39;IL&#39;</span> <span class="s1">&#39;IN&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">drop_vars()</span></code> to drop a full variable from a Dataset. Any variables depending on it are also dropped: <code class="docutils literal notranslate"><span class="pre">da.drop_vars(&quot;time&quot;)</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>   <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([[</span><span class="mf">0.22300306</span><span class="p">,</span> <span class="mf">0.91809559</span><span class="p">,</span> <span class="mf">0.79787847</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.55091584</span><span class="p">,</span> <span class="mf">0.25754302</span><span class="p">,</span> <span class="mf">0.18756148</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.46223584</span><span class="p">,</span> <span class="mf">0.53243459</span><span class="p">,</span> <span class="mf">0.876909</span>  <span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.14886755</span><span class="p">,</span> <span class="mf">0.19766897</span><span class="p">,</span> <span class="mf">0.19531781</span><span class="p">]])</span>
+<span class="n">Coordinates</span><span class="p">:</span>
+ <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>     <span class="o">&lt;</span><span class="n">U2</span>    <span class="s1">&#39;IA&#39;</span> <span class="s1">&#39;IL&#39;</span> <span class="s1">&#39;IN&#39;</span>
+<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="example-of-dataarray-object">
+<h1>Example of DataArray object<a class="headerlink" href="#example-of-dataarray-object" title="Permalink to this headline">#</a></h1>
 <p>The <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/data-structures.html#dataarray">DataArray</a> is one of the basic building blocks of Xarray. It provides a numpy.ndarray-like object that expands to provide two critical pieces of functionality:</p>
 <ol class="simple">
 <li><p>Coordinate names and values are stored with the data, making slicing and indexing much more powerful.</p></li>
 <li><p>It has a built-in container for attributes.</p></li>
 </ol>
+<p>Xarray comes with a collection of datasets to explore: <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.tutorial.open_dataset.html">xarray.tutorial.open_dataset</a></p>
+<p>Available datasets:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;air_temperature&quot;</span></code>: NCEP reanalysis subset</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;air_temperature_gradient&quot;</span></code>: NCEP reanalysis subset with approximate x,y gradients</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;basin_mask&quot;</span></code>: Dataset with ocean basins marked using integers</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;ASE_ice_velocity&quot;</span></code>: MEaSUREs InSAR-Based Ice Velocity of the Amundsen Sea Embayment, Antarctica, Version 1</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;rasm&quot;</span></code>: Output of the Regional Arctic System Model (RASM)</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;ROMS_example&quot;</span></code>: Regional Ocean Model System (ROMS) output</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;tiny&quot;</span></code>: small synthetic dataset with a 1D data variable</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;era5-2mt-2019-03-uk.grib&quot;</span></code>: ERA5 temperature data over the UK</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;eraint_uvz&quot;</span></code>: data from ERA-Interim reanalysis, monthly averages of upper level data</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;ersstv5&quot;</span></code>: NOAA’s Extended Reconstructed Sea Surface Temperature monthly averages</p>
 <p>Example from Physical Sciences Lab at NOAA.</p>
 <img src="images/psl.noaa.gov.png" width=480>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the air_temperature dataset and define a xarray dataarray ds</span>
@@ -508,6 +794,7 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">pooch</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 
+<span class="c1"># Load one of the tutorial datasets</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">tutorial</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;air_temperature&#39;</span><span class="p">)</span>
 <span class="n">ds</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 
@@ -559,7 +846,7 @@ title="Print to PDF"
 
 </pre></div>
 </div>
-<p>We can use <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.groupby.html">xarray.DataArray.groupby</a> to caculate average monthly temperatures and anomalies.</p>
+<p>Then, for example we can use <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.groupby.html">xarray.DataArray.groupby</a> to caculate average monthly temperatures and anomalies.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate monthly climatology</span>
 <span class="n">climatology</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 
@@ -568,117 +855,8 @@ title="Print to PDF"
 
 </pre></div>
 </div>
-</section>
-<section id="extracting-data-or-indexing">
-<h2>Extracting data or “indexing”<a class="headerlink" href="#extracting-data-or-indexing" title="Permalink to this headline">#</a></h2>
-<p>Xarray supports <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/indexing.html">indexing routines</a> that combine the best features of NumPy and pandas for data selection.:</p>
-<ul class="simple">
-<li><p>label-based indexing using .sel</p></li>
-<li><p>position-based indexing using .isel</p></li>
-</ul>
-<p><strong>Example of position based selection:</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">da</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
-     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
-     <span class="p">[</span>
-         <span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2000-01-01&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">4</span><span class="p">)),</span>
-         <span class="p">(</span><span class="s2">&quot;space&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;IA&quot;</span><span class="p">,</span> <span class="s2">&quot;IL&quot;</span><span class="p">,</span> <span class="s2">&quot;IN&quot;</span><span class="p">]),</span>
-     <span class="p">],</span>
-   <span class="p">)</span>
-</pre></div>
-</div>
-<p>We enter <code class="docutils literal notranslate"><span class="pre">da</span></code> to see the DataArray</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>    <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
- <span class="n">array</span><span class="p">([[</span><span class="mf">0.1459828</span> <span class="p">,</span> <span class="mf">0.5703558</span> <span class="p">,</span> <span class="mf">0.74967209</span><span class="p">],</span>
-       <span class="p">[</span><span class="mf">0.80313568</span><span class="p">,</span> <span class="mf">0.83131726</span><span class="p">,</span> <span class="mf">0.94946361</span><span class="p">],</span>
-       <span class="p">[</span><span class="mf">0.62060118</span><span class="p">,</span> <span class="mf">0.77879503</span><span class="p">,</span> <span class="mf">0.57976898</span><span class="p">],</span>
-       <span class="p">[</span><span class="mf">0.82277328</span><span class="p">,</span> <span class="mf">0.5918192</span> <span class="p">,</span> <span class="mf">0.57177288</span><span class="p">]])</span>
-<span class="n">Coordinates</span><span class="p">:</span>
- <span class="n">time</span>  <span class="p">(</span><span class="n">time</span><span class="p">)</span>   <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="o">...</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">04</span>
- <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>            <span class="o">&lt;</span><span class="n">U2</span>  <span class="s1">&#39;IA&#39;</span> <span class="s1">&#39;IL&#39;</span> <span class="s1">&#39;IN&#39;</span>
-<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>If we enter <code class="docutils literal notranslate"><span class="pre">da[:2]</span></code>, we get rows 0 and 1 of the array, and everything else.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>    <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
- <span class="n">array</span><span class="p">([[</span><span class="mf">0.1459828</span> <span class="p">,</span> <span class="mf">0.5703558</span> <span class="p">,</span> <span class="mf">0.74967209</span><span class="p">],</span>
-       <span class="p">[</span><span class="mf">0.80313568</span><span class="p">,</span> <span class="mf">0.83131726</span><span class="p">,</span> <span class="mf">0.94946361</span><span class="p">]])</span>
-<span class="n">Coordinates</span><span class="p">:</span>
- <span class="n">time</span>  <span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>
- <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>           <span class="o">&lt;</span><span class="n">U2</span> <span class="s1">&#39;IA&#39;</span> <span class="s1">&#39;IL&#39;</span> <span class="s1">&#39;IN&#39;</span>
-<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>By entering <code class="docutils literal notranslate"><span class="pre">da[0,0]</span></code> we will get the 0-th element of every variable in the DataArray</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>
- <span class="n">array</span><span class="p">(</span><span class="mf">0.1459828</span><span class="p">)</span>
-<span class="n">Coordinates</span><span class="p">:</span>
- <span class="n">time</span>  <span class="p">()</span>  <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>  <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span>
- <span class="n">space</span> <span class="p">()</span>             <span class="o">&lt;</span><span class="n">U2</span>  <span class="s1">&#39;IA&#39;</span>
-<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Finally if we enter <code class="docutils literal notranslate"><span class="pre">da[:,</span> <span class="pre">[2,1]]</span></code>, we get all the values of the array and</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>    <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
- <span class="n">array</span><span class="p">([[</span><span class="mf">0.74967209</span><span class="p">,</span> <span class="mf">0.5703558</span> <span class="p">],</span>
-       <span class="p">[</span><span class="mf">0.94946361</span><span class="p">,</span> <span class="mf">0.83131726</span><span class="p">],</span>
-       <span class="p">[</span><span class="mf">0.57976898</span><span class="p">,</span> <span class="mf">0.77879503</span><span class="p">],</span>
-       <span class="p">[</span><span class="mf">0.57177288</span><span class="p">,</span> <span class="mf">0.5918192</span> <span class="p">]])</span>
-<span class="n">Coordinates</span><span class="p">:</span>
-<span class="n">time</span>  <span class="p">(</span><span class="n">time</span><span class="p">)</span>  <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>  <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="o">...</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">04</span>
-<span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>            <span class="o">&lt;</span><span class="n">U2</span>  <span class="s1">&#39;IN&#39;</span> <span class="s1">&#39;IL&#39;</span>
-<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Example of label-based indexing using <em>.isel</em></strong></p>
-<p>Index by integer array indices:
-<code class="docutils literal notranslate"><span class="pre">da.isel(space=0,</span> <span class="pre">time=slice(None,</span> <span class="pre">2))</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span> <span class="n">time</span><span class="p">:</span> <span class="mi">2</span>
- <span class="n">array</span><span class="p">([</span><span class="mf">0.1459828</span> <span class="p">,</span> <span class="mf">0.80313568</span><span class="p">])</span>
-<span class="n">Coordinates</span><span class="p">:</span>
- <span class="n">time</span>  <span class="p">(</span><span class="n">time</span><span class="p">)</span>  <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>   <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>
- <span class="n">space</span> <span class="p">()</span>                 <span class="o">&lt;</span><span class="n">U2</span>   <span class="s1">&#39;IA&#39;</span>
-<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-</pre></div>
-</div>
-<p>index by dimension coordinate labels:
-<code class="docutils literal notranslate"><span class="pre">da.sel(time=slice(&quot;2000-01-01&quot;,</span> <span class="pre">&quot;2000-01-02&quot;))</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>  <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
- <span class="n">array</span><span class="p">([[</span><span class="mf">0.1459828</span> <span class="p">,</span> <span class="mf">0.5703558</span> <span class="p">,</span> <span class="mf">0.74967209</span><span class="p">],</span>
-       <span class="p">[</span><span class="mf">0.80313568</span><span class="p">,</span> <span class="mf">0.83131726</span><span class="p">,</span> <span class="mf">0.94946361</span><span class="p">]])</span>
-<span class="n">Coordinates</span><span class="p">:</span>
- <span class="n">time</span> <span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>
- <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>           <span class="o">&lt;</span><span class="n">U2</span> <span class="s1">&#39;IA&#39;</span> <span class="s1">&#39;IL&#39;</span> <span class="s1">&#39;IN&#39;</span>
-<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-</pre></div>
-</div>
-<p>Selecting the 0-th element: <code class="docutils literal notranslate"><span class="pre">da.isel(space=[0],</span> <span class="pre">time=[0])</span></code> (same as <code class="docutils literal notranslate"><span class="pre">da[0,0]</span></code>)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>  <span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
- <span class="n">array</span><span class="p">([[</span><span class="mf">0.1459828</span><span class="p">]])</span>
-<span class="n">Coordinates</span><span class="p">:</span>
- <span class="n">time</span>  <span class="p">(</span><span class="n">time</span><span class="p">)</span>  <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>  <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span>
- <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>            <span class="o">&lt;</span><span class="n">U2</span>  <span class="s1">&#39;IA&#39;</span>
-<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-</pre></div>
-</div>
-<p>Selecting a time slice: <code class="docutils literal notranslate"><span class="pre">da.sel(time=&quot;2000-01-01&quot;)</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span> <span class="p">(</span><span class="n">space</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
- <span class="n">array</span><span class="p">([</span><span class="mf">0.1459828</span> <span class="p">,</span> <span class="mf">0.5703558</span> <span class="p">,</span> <span class="mf">0.74967209</span><span class="p">])</span>
-<span class="n">Coordinates</span><span class="p">:</span>
- <span class="n">time</span>  <span class="p">()</span>  <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>  <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span>
- <span class="n">space</span> <span class="p">(</span><span class="n">space</span><span class="p">)</span>        <span class="o">&lt;</span><span class="n">U2</span>  <span class="s1">&#39;IA&#39;</span> <span class="s1">&#39;IL&#39;</span> <span class="s1">&#39;IN&#39;</span>
-<span class="n">Attributes</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-</pre></div>
-</div>
-</section>
-<section id="dropping-labels-and-dimensions">
-<h2>Dropping labels and dimensions<a class="headerlink" href="#dropping-labels-and-dimensions" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>Here we’ll initialize a DataArray object by wrapping a plain NumPy array, and explore a few of its properties.</p>
-</section>
 <section id="xarray-installation-and-dependencies">
 <h2>Xarray installation and dependencies.<a class="headerlink" href="#xarray-installation-and-dependencies" title="Permalink to this headline">#</a></h2>
 <p><strong>For netDCF and IO</strong>: There is a set of optional dependencies when installing Xarray:</p>
@@ -704,8 +882,20 @@ title="Print to PDF"
 <h1>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/index.html">Xarray Documentation</a>.</p></li>
+<li><p><a class="reference external" href="https://tutorial.xarray.dev/intro.html">Xarray Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/index.html">Xarray User Guide</a></p></li>
+<li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/api.html">Xarray API Reference</a></p></li>
 <li><p><a class="reference external" href="https://foundations.projectpythia.org/core/xarray.html">Xarray</a>. Project Pythia.</p></li>
 </ul>
+<!-- Move this to different file
+* [Xarray-spatial Documentation](https://xarray-spatial.org)
+* [Zarr Documentation](https://zarr.readthedocs.io/en/stable/tutorial.html)
+-->
+<hr class="docutils" />
+<p>Created: 08/18/2022;
+Updated: 08/22/2022</p>
+<p>Carlos Lizárraga.
+UA Data Science Institute.</p>
 </section>
 
     <script type="text/x-thebe-config">
