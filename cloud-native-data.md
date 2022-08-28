@@ -83,4 +83,8 @@ A [Cloud Optimized GeoTIFF (COG)](https://www.cogeo.org/) is a regular [GeoTIFF 
 * [Ryan P. Abernathey _et al._ (2021) Cloud-Native Repositories for Big Scientific Data. Computing in Science and Engineering. IEEE Computer Society](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9354557)
 
 ***
------
+Created: 08/18/2022;
+Updated: 08/22/2022
+
+Carlos Lizárraga.
+UA Data Science Institute.
