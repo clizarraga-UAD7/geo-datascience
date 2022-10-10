@@ -79,6 +79,13 @@ The SpatioTemporal Asset Catalog (STAC) specification provides a common language
 
 COGs and STAC provide the building blocks for a flexible and accessible system for geospatial data analysis (geospatial imagery). STAC provides a system for describing large collections of geospatial data stored in cloud object store and COG provide efficient access to pieces of those collections without the need to download the data first.
 
+#### Python libraries needed to work with COG files
+
+The following libraries are needed:
+* [rasterio](https://rasterio.readthedocs.io/en/latest/index.html). Geographic information systems use GeoTIFF and other formats to organize and store gridded raster datasets such as satellite imagery and terrain models. Rasterio reads and writes these formats and provides a Python API based on Numpy N-dimensional arrays and GeoJSON.
+* [pyproj](https://pyproj4.github.io/pyproj/stable/). Python interface to [PROJ](https://proj.org) (cartographic projections and coordinate transformations library).
+* [sat-search](https://github.com/sat-utils/sat-search). Sat-search is a Python 3 library and a command line tool for discovering and downloading publicly available satellite imagery using STAC compliant API.
+
 ### COPC
 
 
