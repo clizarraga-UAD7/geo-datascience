@@ -335,6 +335,13 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#cog">
      COG
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#python-libraries-needed-to-work-with-cog-files">
+       Python libraries needed to work with COG files
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#copc">
@@ -396,6 +403,13 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#cog">
      COG
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#python-libraries-needed-to-work-with-cog-files">
+       Python libraries needed to work with COG files
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#copc">
@@ -509,6 +523,15 @@ FeatureCollection).</p>
 <p>Like many open source projects, the development and production of COGs has lead to innovation in other areas as well. One example of such innovation is the development of the <a class="reference external" href="https://stacspec.org/en">SpatioTemporal Asset Catalog (STAC)</a>.</p>
 <p>The SpatioTemporal Asset Catalog (STAC) specification provides a common language to describe a range of geospatial information, so it can more easily be indexed and discovered. A ‘spatiotemporal asset’ is any file that represents information about the earth captured in a certain space and time.</p>
 <p>COGs and STAC provide the building blocks for a flexible and accessible system for geospatial data analysis (geospatial imagery). STAC provides a system for describing large collections of geospatial data stored in cloud object store and COG provide efficient access to pieces of those collections without the need to download the data first.</p>
+<section id="python-libraries-needed-to-work-with-cog-files">
+<h3>Python libraries needed to work with COG files<a class="headerlink" href="#python-libraries-needed-to-work-with-cog-files" title="Permalink to this headline">#</a></h3>
+<p>The following libraries are needed:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://rasterio.readthedocs.io/en/latest/index.html">rasterio</a>. Geographic information systems use GeoTIFF and other formats to organize and store gridded raster datasets such as satellite imagery and terrain models. Rasterio reads and writes these formats and provides a Python API based on Numpy N-dimensional arrays and GeoJSON.</p></li>
+<li><p><a class="reference external" href="https://pyproj4.github.io/pyproj/stable/">pyproj</a>. Python interface to <a class="reference external" href="https://proj.org">PROJ</a> (cartographic projections and coordinate transformations library).</p></li>
+<li><p><a class="reference external" href="https://github.com/sat-utils/sat-search">sat-search</a>. Sat-search is a Python 3 library and a command line tool for discovering and downloading publicly available satellite imagery using STAC compliant API.</p></li>
+</ul>
+</section>
 </section>
 <section id="copc">
 <h2>COPC<a class="headerlink" href="#copc" title="Permalink to this headline">#</a></h2>
