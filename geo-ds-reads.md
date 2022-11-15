@@ -2,10 +2,6 @@
 
 A collection of online resources
 
-Python geosciences oriented libraries:
-
-- [StackSTAC](https://github.com/gjoseph92/stackstac). Turns a list of STAC items into a 4D xarray DataArray (dims: time, band, y, x), including reprojection to a common grid.
-- [Xarray](https://xarray.dev/). N-D labeled arrays and datasets.
 
 Applications
 
