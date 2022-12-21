@@ -1,4 +1,4 @@
-## Introduction to Geospacial Data Science
+## Introduction to Geospatial Data Science
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Carbon_cycle-cute_diagram.jpeg" width=840/>
 Image credit: Wikimedia Commons
